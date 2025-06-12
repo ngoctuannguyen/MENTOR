@@ -49,10 +49,16 @@ def init_logger(config):
     sh.setLevel(level)
     sh.setFormatter(sformatter)
 
-    logging.basicConfig(
-        level=level,
-        #handlers=[sh]
-        handlers = [sh, fh]
-    )
+    logger = logging.getLogger()
+    logger.setLevel(level)
 
+    if logger.hasHandlers():
+        logger.handlers.clear()
+
+    logger.addHandler(sh)
+    logger.addHandler(fh)
+
+    # logger.info("Logger initialized successfully.")
+
+    return logger
 

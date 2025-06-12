@@ -1,4 +1,5 @@
 from logging import getLogger
+import logging
 from itertools import product
 from utils_package.dataset import RecDataset
 from utils_package.dataloader import TrainDataLoader, EvalDataLoader
@@ -14,8 +15,8 @@ def quick_start(model, dataset, config_dict, save_model=True):
     config = Config(model, dataset, config_dict)
     print(config_dict)
     print("<<<")
-    init_logger(config)
-    logger = getLogger()
+    logger = init_logger(config)
+    # logger = getLogger()
     # print config infor
     logger.info('██Server: \t' + platform.node())
     logger.info('██Dir: \t' + os.getcwd() + '\n')
